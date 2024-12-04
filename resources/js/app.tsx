@@ -6,6 +6,9 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import '@fontsource/poppins'; // Poids par défaut
 import '@fontsource/poppins/400.css'; // Poids spécifique
+import '@fontsource/poppins/700.css'; // Poids spécifique
+import '@fontsource/poppins/900.css'; // Poids spécifique
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
