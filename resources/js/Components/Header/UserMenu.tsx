@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGear, faSignOut, faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
-import { AnimationScope, useAnimate } from "framer-motion";
+import { faGear, faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
+import { AnimationScope } from "framer-motion";
 
 export default function UserMenu(
     {
@@ -12,7 +12,7 @@ export default function UserMenu(
     return <nav ref={scopeUserMenu}
     style={{ transformOrigin: 'top' }}
     id="nav-user-menu"
-    className="absolute shadow  bg-white p-4 rounded-md top-20 text-slate-800 border">
+    className="absolute shadow  bg-white p-4 transition-transform ease-linear rounded-md top-20 text-slate-800 border">
         <ul className="space-y-4">
             <li>
                 <a href="#" className="flex gap-x-2 items-baseline">

@@ -6,14 +6,18 @@ import '../../css/sidebar.css'
 
 type SideBarType = {
     className: string,
+    refSideBar: AnimationScope<any>
 }
-export default function SideBar({
+export default function SideBarMobile({
     className,
+    refSideBar
 }: SideBarType) {
     return <nav className={
         className
     }
-    >
+    style={{ transformOrigin: 'top' }}
+    id="sidebar-container"
+    ref={refSideBar}>
         <ul className="space-y-2">
             <SideBarLink>
                 <FontAwesomeIcon icon={faChartLine} />

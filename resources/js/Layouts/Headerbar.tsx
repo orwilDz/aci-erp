@@ -4,13 +4,17 @@ import { faBars, faBell, faChevronDown } from '@fortawesome/free-solid-svg-icons
 import UserMenu from '../Components/Header/UserMenu';
 import { AnimationScope, useAnimate } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useSidebar } from '@/stores/sidebar.store';
 export default function HeaderBar() {
-
+    // Animation de user menu:
     const [handleUserMenuToggle, scopeUserMenu] = animationUserMenu();
+
+    // Sidebar store (animation de sidebar):
+    const {toggleSidebar} = useSidebar();
 
     return <header className='fixed top-0 w-full h-20'>
         <nav className="flex justify-around items-center h-full p-4 bg-primary text-base-100">
-            <button className='md:hidden'>
+            <button className='md:hidden' onClick={toggleSidebar}>
                 <FontAwesomeIcon icon={faBars} />
             </button>
             <div id="header-logo" className="items-center gap-2 hidden md:flex">
@@ -35,7 +39,7 @@ export default function HeaderBar() {
     </header>
 }
 
-function animationUserMenu () : [() => void , AnimationScope<any>] {
+function animationUserMenu(): [() => void, AnimationScope<any>] {
 
     const ANIMATIONDURATION = 0.1;
 
@@ -43,17 +47,16 @@ function animationUserMenu () : [() => void , AnimationScope<any>] {
     const [isUserMenuExpanded, setIsUserMenuExpanded] = useState(false);
     const handleUserMenuToggle = () => {
         if (!isUserMenuExpanded) {
-            animateUserMenu(scopeUserMenu.current, {scaleY: 1}, {duration: ANIMATIONDURATION})
+            animateUserMenu(scopeUserMenu.current, { scaleY: 1 }, { duration: ANIMATIONDURATION })
         } else {
-            animateUserMenu(scopeUserMenu.current, {scaleY: 0}, {duration: ANIMATIONDURATION})
+            animateUserMenu(scopeUserMenu.current, { scaleY: 0 }, { duration: ANIMATIONDURATION })
         }
         setIsUserMenuExpanded(expanded => !expanded);
     }
 
-    useEffect(() => {
-        animateUserMenu(scopeUserMenu.current, {scaleY: 0}, {duration: 0})
 
-    }, [])
 
     return [handleUserMenuToggle, scopeUserMenu];
 }
+
+
