@@ -3,6 +3,7 @@ import { faBox, faChartLine, faCog, faShoppingCart, faUsers, faWarehouse } from 
 import SideBarLink from '@/Components/Sidebar/SideBarLink';
 import { AnimationScope } from 'framer-motion';
 import '../../css/sidebar.css'
+import { SideBarLinks } from '@/data/Layouts/SideBarData';
 
 type SideBarType = {
     className: string,
@@ -19,31 +20,23 @@ export default function SideBarMobile({
     id="sidebar-container"
     ref={refSideBar}>
         <ul className="space-y-2">
-            <SideBarLink>
-                <FontAwesomeIcon icon={faChartLine} />
-                <span>Tableau de bord</span>
-            </SideBarLink>
-            <SideBarLink>
-                <FontAwesomeIcon icon={faBox} />
-                <span>Produits</span>
-            </SideBarLink>
-            <SideBarLink>
-                <FontAwesomeIcon icon={faWarehouse} />
-                <span>Inventaire</span>
-            </SideBarLink>
-            <SideBarLink>
-                <FontAwesomeIcon icon={faShoppingCart} />
-                <span>Commandes</span>
-            </SideBarLink>
-            <SideBarLink>
-                <FontAwesomeIcon icon={faUsers} />
-                <span>Clients</span>
-            </SideBarLink>
-            <div className="divider px-2"></div>
-            <SideBarLink>
-                <FontAwesomeIcon icon={faCog} />
-                <span>Paramètres</span>
-            </SideBarLink>
+            {SidebarItems()}
         </ul>
     </nav>
+}
+
+function SidebarItems() {
+
+    const items: JSX.Element[] = [];
+    for (let i = 0; i < SideBarLinks.length; i++) {
+        const element = SideBarLinks[i];
+        const item = (<SideBarLink key={`sidebar-mobile-item-${i}`}>
+            <FontAwesomeIcon icon={element.icon} />
+            <span>{element.title}</span>
+        </SideBarLink>
+        );
+        items.push(item);
+    }
+
+    return items;
 }

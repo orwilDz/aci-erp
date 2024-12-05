@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear, faSignOutAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 import { AnimationScope } from "framer-motion";
+import { UserMenuLinks } from "@/data/Layouts/UserMenuData";
+import UserMenuLink from "./UserMenuLink";
 
 export default function UserMenu(
     {
@@ -14,25 +16,19 @@ export default function UserMenu(
     id="nav-user-menu"
     className="absolute shadow  bg-white p-4 transition-transform ease-linear rounded-md top-20 text-slate-800 border">
         <ul className="space-y-4">
-            <li>
-                <a href="#" className="flex gap-x-2 items-baseline">
-                    <FontAwesomeIcon icon={faUser} />
-                    <span>Mon profil</span>
-                </a>
-            </li>
-            <li>
-                <a href="#" className="flex gap-x-2 items-baseline">
-                    <FontAwesomeIcon icon={faGear} />
-                    <span>Paramètres</span>
-                </a>
-            </li>
-            <div className="divider"></div>
-            <li>
-                <a href="#" className="flex gap-x-2 items-center text-red-600">
-                    <FontAwesomeIcon icon={faSignOutAlt} />
-                    <span>Déconnexion</span>
-                </a>
-            </li>
+            {UserMenuItems()}
         </ul>
     </nav>
+}
+
+function UserMenuItems() {
+
+    const items: JSX.Element[] = [];
+    for (let i = 0; i < UserMenuLinks.length; i++) {
+        const element = UserMenuLinks[i];
+        const item = (<UserMenuLink title={element.title} href={element.href} icon={element.icon} color={element.color} />)
+        items.push(item);
+    }
+
+    return items;
 }
