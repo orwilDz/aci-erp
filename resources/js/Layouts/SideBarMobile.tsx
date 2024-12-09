@@ -16,9 +16,9 @@ export default function SideBarMobile({
     return <nav className={
         className
     }
-    style={{ transformOrigin: 'top' }}
-    id="sidebar-container"
-    ref={refSideBar}>
+        style={{ transformOrigin: 'top' }}
+        id="sidebar-container"
+        ref={refSideBar}>
         <ul className="space-y-2">
             {SidebarItems()}
         </ul>
@@ -30,10 +30,9 @@ function SidebarItems() {
     const items: JSX.Element[] = [];
     for (let i = 0; i < SideBarLinks.length; i++) {
         const element = SideBarLinks[i];
-        const item = (<SideBarLink key={`sidebar-mobile-item-${i}`}>
-            <FontAwesomeIcon icon={element.icon} />
-            <span>{element.title}</span>
-        </SideBarLink>
+        const item = (<SideBarLink key={`sidebar-mobile-item-${i}`} title={element.title}
+            icon={element.icon}
+            href={element.href} />
         );
         items.push(item);
     }

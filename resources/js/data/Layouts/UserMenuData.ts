@@ -5,8 +5,12 @@ type UserMenuLinksData = {
     title: string;
     href?: string;
     color?: string;
-}
-export const UserMenuLinks: UserMenuLinksData[] = [
+  }
+| {
+    divider: false;
+  };
+
+export const UserMenuLinks:UserMenuLinksData[] = [
     {
         icon: faUser,
         title: 'Mon profil',
@@ -14,6 +18,9 @@ export const UserMenuLinks: UserMenuLinksData[] = [
     {
         icon: faGear,
         title: 'Paramètres',
+    },
+    {
+        divider: false,
     },
     {
         icon: faSignOutAlt,

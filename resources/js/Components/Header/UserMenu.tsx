@@ -14,7 +14,7 @@ export default function UserMenu(
     return <nav ref={scopeUserMenu}
     style={{ transformOrigin: 'top' }}
     id="nav-user-menu"
-    className="absolute shadow  bg-white p-4 transition-transform ease-linear rounded-md top-20 text-slate-800 border">
+    className="absolute shadow  bg-white p-4 transition-transform ease-linear rounded-md top-20 border">
         <ul className="space-y-4">
             {UserMenuItems()}
         </ul>
@@ -26,7 +26,19 @@ function UserMenuItems() {
     const items: JSX.Element[] = [];
     for (let i = 0; i < UserMenuLinks.length; i++) {
         const element = UserMenuLinks[i];
-        const item = (<UserMenuLink title={element.title} href={element.href} icon={element.icon} color={element.color} />)
+        let item;
+        if ('divider' in element) {
+            item = <div className="divider"></div>
+        }else {
+            item =  (
+                <UserMenuLink
+                    key={`user-menu-${i}`}
+                    title={element.title}
+                    href={element.href}
+                    icon={element.icon}
+                    color={element.color}
+                />)
+        }
         items.push(item);
     }
 

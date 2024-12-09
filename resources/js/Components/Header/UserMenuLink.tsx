@@ -13,8 +13,8 @@ export default function UserMenuLink({
     title,
     color
 }:UserMenuLinkType) {
-    return <li>
-        <a href = {href ? href : '#'} className={`flex gap-x-2 items-baseline ${color ? 'text-'+color : ''}`}>
+    return <li className={color ? `text-${color}` : `text-slate-800`}>
+        <a href = {href ? href : '#'} className={`flex gap-x-2 items-baseline`}>
             <FontAwesomeIcon icon={icon} />
             <span>{title}</span>
         </a>
